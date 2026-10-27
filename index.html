@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bryce Ramos Photography | Portfolio Website Coming Soon</title>
+  <meta name="description" content="The Bryce Ramos Photography portfolio website is coming soon.">
+  <meta name="theme-color" content="#0b0d10">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Oswald:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --ink: #ffffff;
+      --ink-soft: rgba(255, 255, 255, 0.6);
+      --ink-faint: rgba(255, 255, 255, 0.4);
+      --line: rgba(255, 255, 255, 0.15);
+      --accent: #9ec0ea;
+      --accent-deep: #5b7fae;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .page {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow: hidden;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    /* Backdrop */
+    .layer { position: absolute; inset: 0; pointer-events: none; }
+    .base { background: linear-gradient(160deg, #1c2026 0%, #12151a 45%, #1a2230 100%); }
+    .orb { position: absolute; border-radius: 50%; pointer-events: none; }
+    .orb-1 { width: 608px; height: 608px; background: #3a4352; left: -10%; top: -15%; opacity: 0.5; filter: blur(120px); }
+    .orb-2 { width: 672px; height: 672px; background: #24364f; right: -10%; bottom: -20%; opacity: 0.6; filter: blur(140px); }
+    .orb-3 { width: 256px; height: 256px; background: #5a6577; left: 55%; top: 20%; opacity: 0.25; filter: blur(90px); }
+    .orb-4 { width: 160px; height: 160px; background: #7fa6d6; left: 18%; bottom: 18%; opacity: 0.1; filter: blur(70px); }
+    .vignette { background: radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,0.75) 100%); }
+    .fade { background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.5) 100%); }
+
+    /* Header */
+    header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 40px 48px 0;
+    }
+    .brand {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .site {
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: lowercase;
+    }
+
+    /* Main */
+    main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      width: 100%;
+      max-width: 704px;
+      padding: 80px 24px;
+    }
+
+    h1 {
+      font-family: "Oswald", "Arial Narrow", Impact, sans-serif;
+      font-size: 88px;
+      line-height: 84px;
+      letter-spacing: 0.18em;
+      font-weight: 300;
+      text-align: center;
+      text-transform: uppercase;
+      /* letter-spacing adds trailing space; nudge so lines stay optically centered */
+      padding-left: 0.18em;
+    }
+    h1 span { display: block; }
+    h1 .strong {
+      font-weight: 600;
+      text-shadow: 0 0 30px rgba(158, 192, 234, 0.25);
+    }
+
+    .headline { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+
+    .tagline {
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+    }
+
+    /* Progress */
+    .progress { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 12px; }
+    .row { display: flex; justify-content: space-between; align-items: center; }
+    .small { font-size: 11px; line-height: 16px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-faint); }
+    .small.accent { color: var(--accent); font-weight: 500; }
+    .small.ends { letter-spacing: 0.2em; text-transform: none; }
+    .track { position: relative; height: 3px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+    .fill {
+      position: absolute; left: 0; top: 0; height: 100%; width: 70%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-deep) 0%, var(--accent) 100%);
+      box-shadow: 0 0 14px rgba(158, 192, 234, 0.7);
+      transform-origin: left center;
+      animation: grow 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+    }
+    @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    /* Notify form */
+    .notify {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 480px;
+      padding: 6px 6px 6px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      transition: border-color 0.2s ease;
+    }
+    .notify:focus-within { border-color: rgba(158, 192, 234, 0.6); }
+    .notify input {
+      flex: 1;
+      min-width: 0;
+      height: 44px;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+    .notify input::placeholder { color: rgba(255, 255, 255, 0.35); }
+    .notify button {
+      flex: none;
+      height: 44px;
+      padding: 0 28px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .notify button:hover { background: #fff; color: #000; }
+    .notify button:active { opacity: 0.8; }
+    .notify button:focus-visible,
+    .social a:focus-visible,
+    .contact a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .contact { font-size: 12px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.45); text-align: center; }
+    .contact a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+    .contact a:hover { color: #fff; }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+      padding: 0 24px 40px;
+    }
+    .social { display: flex; gap: 16px; }
+    .social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .social a:hover { border-color: var(--accent); color: #fff; }
+    .social svg { width: 1em; height: 1em; display: block; }
+
+    .legal { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.35); text-align: center; }
+    .legal .sep { width: 1px; height: 12px; background: rgba(255, 255, 255, 0.2); }
+    .legal .domain { text-transform: lowercase; letter-spacing: 0.25em; }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      header { flex-direction: column; gap: 8px; padding: 32px 24px 0; }
+      .site { display: none; }
+      .orb-3 { display: none; }
+      main { gap: 40px; padding: 56px 24px; }
+      h1 { font-size: 44px; line-height: 66px; letter-spacing: 0.12em; padding-left: 0.12em; }
+      .tagline { font-size: 12px; line-height: 16px; letter-spacing: 0.25em; }
+      .notify { flex-direction: column; align-items: stretch; border-radius: 16px; padding: 8px; gap: 8px; }
+      .notify input { width: 100%; padding: 0 16px; }
+      .notify button { width: 100%; border-radius: 12px; }
+      .legal { flex-direction: column; gap: 4px; }
+      .legal .sep { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fill { animation: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="layer base"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="layer vignette"></div>
+    <div class="layer fade"></div>
+
+    <header>
+      <span class="brand">Bryce Ramos Photography</span>
+      <span class="site">www.bryceramosphotography.com</span>
+    </header>
+
+    <main>
+      <div class="headline">
+        <h1>
+          <span>Portfolio</span>
+          <span>Website</span>
+          <span class="strong">Coming Soon</span>
+        </h1>
+        <p class="tagline">A new home for my work is on its way.</p>
+      </div>
+
+      <div class="progress" role="img" aria-label="Website progress: 70 percent complete">
+        <div class="row">
+          <span class="small">Progress</span>
+          <span class="small accent">70%</span>
+        </div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="row">
+          <span class="small ends">0%</span>
+          <span class="small ends">100%</span>
+        </div>
+      </div>
+
+      <form class="notify" id="notify" action="mailto:bryce@bryceramos.com" method="post" enctype="text/plain">
+        <label for="email" class="sr" style="position:absolute;left:-9999px;">Email address</label>
+        <input id="email" name="email" type="email" placeholder="Your email address" autocomplete="email" required>
+        <button type="submit">Notify Me</button>
+      </form>
+
+      <p class="contact"><a href="mailto:bryce@bryceramos.com">bryce@bryceramos.com</a></p>
+    </main>
+
+    <footer>
+      <div class="social">
+        <!-- TODO: replace each href="#" with the real profile URL -->
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9m0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5m5.3-3.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8h2.7l.4-3.2h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V14h2.7v8z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.9 8.6H3.6V20h3.3zM5.2 3.5a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8m15.2 9.9c0-3.1-1.7-4.9-4.3-4.9-1.6 0-2.6.9-3 1.6V8.6H9.9V20h3.3v-5.7c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z"/></svg>
+        </a>
+      </div>
+      <div class="legal">
+        <span>© 2026 Bryce Ramos Photography, LLC.</span>
+        <span class="sep"></span>
+        <span class="domain">www.bryceramosphotography.com</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
