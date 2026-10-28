@@ -5,28 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Bryce Ramos Photography | Portfolio Website Coming Soon</title>
   <meta name="description" content="The Bryce Ramos Photography portfolio website is coming soon.">
-  <meta name="theme-color" content="#0b0d10">
+  <meta name="theme-color" content="#f5f4f2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Oswald:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0d10;
-      --ink: #ffffff;
-      --ink-soft: rgba(255, 255, 255, 0.6);
-      --ink-faint: rgba(255, 255, 255, 0.4);
-      --line: rgba(255, 255, 255, 0.15);
-      --accent: #9ec0ea;
-      --accent-deep: #5b7fae;
+      --ink: #141414;
+      --ink-2: #4a4a4a;
+      --ink-3: #5c5c5c;
+      --ink-4: #8a8a8a;
+      --line: #d4d4d4;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html, body { height: 100%; }
 
     body {
-      background: var(--bg);
       color: var(--ink);
+      background: #f5f4f2;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
@@ -42,102 +39,76 @@
       overflow: hidden;
       padding-top: env(safe-area-inset-top, 0px);
       padding-bottom: env(safe-area-inset-bottom, 0px);
+      background: linear-gradient(to bottom, #fbfaf8 0%, #f5f4f2 50%, #e9e9ea 100%);
     }
 
-    /* Backdrop */
-    .layer { position: absolute; inset: 0; pointer-events: none; }
-    .base { background: linear-gradient(160deg, #1c2026 0%, #12151a 45%, #1a2230 100%); }
-    .orb { position: absolute; border-radius: 50%; pointer-events: none; }
-    .orb-1 { width: 608px; height: 608px; background: #3a4352; left: -10%; top: -15%; opacity: 0.5; filter: blur(120px); }
-    .orb-2 { width: 672px; height: 672px; background: #24364f; right: -10%; bottom: -20%; opacity: 0.6; filter: blur(140px); }
-    .orb-3 { width: 256px; height: 256px; background: #5a6577; left: 55%; top: 20%; opacity: 0.25; filter: blur(90px); }
-    .orb-4 { width: 160px; height: 160px; background: #7fa6d6; left: 18%; bottom: 18%; opacity: 0.1; filter: blur(70px); }
-    .vignette { background: radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,0.75) 100%); }
-    .fade { background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.5) 100%); }
+    /* Soft blurred backdrop */
+    .glow { position: absolute; border-radius: 50%; pointer-events: none; }
+    .glow-1 { left: 50%; top: -10%; width: 90%; height: 70%; transform: translateX(-50%); background: #cfc8c0; opacity: 0.35; filter: blur(80px); }
+    .glow-2 { right: -10%; bottom: -20%; width: 50%; height: 60%; background: #e6ddd2; opacity: 0.6; filter: blur(70px); }
+    .glow-3 { left: -10%; top: 30%; width: 40%; height: 50%; background: #dfe3ea; opacity: 0.7; filter: blur(70px); }
 
-    /* Header */
     header {
       position: relative;
-      z-index: 1;
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 40px 48px 0;
+      padding: 40px 64px;
     }
-    .brand {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8);
-    }
-    .site {
-      font-size: 12px;
-      letter-spacing: 0.3em;
-      color: rgba(255, 255, 255, 0.4);
-      text-transform: lowercase;
-    }
+    .brand { font-size: 12px; font-weight: 500; line-height: 18px; letter-spacing: 0.35em; text-transform: uppercase; color: #1a1a1a; }
+    .site { font-size: 12px; font-weight: 300; line-height: 18px; letter-spacing: 0.2em; color: #6b6b6b; }
 
-    /* Main */
     main {
       position: relative;
-      z-index: 1;
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 48px;
+      gap: 56px;
       width: 100%;
-      max-width: 704px;
-      padding: 80px 24px;
-    }
-
-    h1 {
-      font-family: "Oswald", "Arial Narrow", Impact, sans-serif;
-      font-size: 88px;
-      line-height: 84px;
-      letter-spacing: 0.18em;
-      font-weight: 300;
-      text-align: center;
-      text-transform: uppercase;
-      /* letter-spacing adds trailing space; nudge so lines stay optically centered */
-      padding-left: 0.18em;
-    }
-    h1 span { display: block; }
-    h1 .strong {
-      font-weight: 600;
-      text-shadow: 0 0 30px rgba(158, 192, 234, 0.25);
+      max-width: 720px;
+      padding: 64px 24px;
     }
 
     .headline { display: flex; flex-direction: column; align-items: center; gap: 24px; }
 
-    .tagline {
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
+    h1 {
+      font-size: 64px;
+      font-weight: 200;
+      line-height: 67px;
+      letter-spacing: 0.22em;
       text-align: center;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding-left: 0.22em; /* balances trailing letter-spacing so lines center optically */
     }
+    h1 span { display: block; }
+
+    .tagline { font-size: 15px; font-weight: 300; line-height: 22.5px; letter-spacing: 0.12em; color: var(--ink-3); text-align: center; }
 
     /* Progress */
-    .progress { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 12px; }
-    .row { display: flex; justify-content: space-between; align-items: center; }
-    .small { font-size: 11px; line-height: 16px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-faint); }
-    .small.accent { color: var(--accent); font-weight: 500; }
-    .small.ends { letter-spacing: 0.2em; text-transform: none; }
-    .track { position: relative; height: 3px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+    .progress { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 12px; }
+    .track { position: relative; height: 1px; width: 100%; background: var(--line); }
     .fill {
-      position: absolute; left: 0; top: 0; height: 100%; width: 70%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent-deep) 0%, var(--accent) 100%);
-      box-shadow: 0 0 14px rgba(158, 192, 234, 0.7);
+      position: absolute; left: 0; top: 0; height: 1px; width: 70%;
+      background: var(--ink);
       transform-origin: left center;
       animation: grow 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
     }
+    .dot {
+      position: absolute; left: 70%; top: -3px;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--ink);
+      transform: translateX(-50%);
+      animation: dot 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+    }
     @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @keyframes dot { from { left: 0; } to { left: 70%; } }
+    .marks { display: flex; justify-content: space-between; align-items: center; font-size: 11px; line-height: 16.5px; letter-spacing: 0.25em; }
+    .marks .dim { font-weight: 300; color: var(--ink-4); }
+    .marks .now { font-weight: 500; color: var(--ink); }
 
     /* Notify form */
     .notify {
@@ -145,113 +116,108 @@
       align-items: center;
       gap: 8px;
       width: 100%;
-      max-width: 480px;
+      max-width: 440px;
       padding: 6px 6px 6px 24px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid #dcdcdc;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
       -webkit-backdrop-filter: blur(12px);
       backdrop-filter: blur(12px);
       transition: border-color 0.2s ease;
     }
-    .notify:focus-within { border-color: rgba(158, 192, 234, 0.6); }
+    .notify:focus-within { border-color: #9a9a9a; }
     .notify input {
       flex: 1;
       min-width: 0;
-      height: 44px;
+      height: 40px;
       background: transparent;
       border: 0;
       outline: 0;
       color: var(--ink);
       font: inherit;
       font-size: 14px;
+      font-weight: 300;
       letter-spacing: 0.05em;
     }
-    .notify input::placeholder { color: rgba(255, 255, 255, 0.35); }
+    .notify input::placeholder { color: #9a9a9a; }
     .notify button {
       flex: none;
-      height: 44px;
+      height: 40px;
       padding: 0 28px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: 0;
       border-radius: 999px;
-      background: transparent;
-      color: var(--ink);
+      background: #111;
+      color: #fff;
       font: inherit;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
+      transition: background 0.2s ease;
     }
-    .notify button:hover { background: #fff; color: #000; }
-    .notify button:active { opacity: 0.8; }
+    .notify button:hover { background: #2a2a2a; }
+    .notify button:active { background: #000; }
     .notify button:focus-visible,
     .social a:focus-visible,
-    .contact a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-    .contact { font-size: 12px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.45); text-align: center; }
-    .contact a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
-    .contact a:hover { color: #fff; }
+    .contact a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    .sr { position: absolute; left: -9999px; }
 
     /* Footer */
     footer {
       position: relative;
-      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 24px;
       width: 100%;
-      padding: 0 24px 40px;
+      padding: 16px 24px 40px;
     }
-    .social { display: flex; gap: 16px; }
+    .social { display: flex; gap: 12px; }
     .social a {
       display: flex; align-items: center; justify-content: center;
-      width: 40px; height: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      width: 36px; height: 36px;
+      border: 1px solid #c9c9c9;
       border-radius: 50%;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 16px;
-      transition: border-color 0.2s ease, color 0.2s ease;
+      color: #2a2a2a;
+      font-size: 14px;
+      transition: border-color 0.2s ease;
     }
-    .social a:hover { border-color: var(--accent); color: #fff; }
+    .social a:hover { border-color: var(--ink); }
     .social svg { width: 1em; height: 1em; display: block; }
 
-    .legal { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.35); text-align: center; }
-    .legal .sep { width: 1px; height: 12px; background: rgba(255, 255, 255, 0.2); }
-    .legal .domain { text-transform: lowercase; letter-spacing: 0.25em; }
+    .contact { display: flex; align-items: center; gap: 16px; font-size: 12px; font-weight: 300; line-height: 18px; letter-spacing: 0.15em; color: var(--ink-2); }
+    .contact a { color: inherit; text-decoration: none; }
+    .contact a:hover { color: var(--ink); }
+    .contact .sep { width: 1px; height: 12px; background: #cfcfcf; }
+    .legal { font-size: 11px; font-weight: 300; line-height: 16.5px; letter-spacing: 0.12em; color: #8f8f8f; text-align: center; }
 
     /* Mobile */
     @media (max-width: 640px) {
-      header { flex-direction: column; gap: 8px; padding: 32px 24px 0; }
+      header { flex-direction: column; gap: 8px; padding: 32px 24px; }
       .site { display: none; }
-      .orb-3 { display: none; }
-      main { gap: 40px; padding: 56px 24px; }
-      h1 { font-size: 44px; line-height: 66px; letter-spacing: 0.12em; padding-left: 0.12em; }
-      .tagline { font-size: 12px; line-height: 16px; letter-spacing: 0.25em; }
-      .notify { flex-direction: column; align-items: stretch; border-radius: 16px; padding: 8px; gap: 8px; }
-      .notify input { width: 100%; padding: 0 16px; }
-      .notify button { width: 100%; border-radius: 12px; }
-      .legal { flex-direction: column; gap: 4px; }
-      .legal .sep { display: none; }
+      main { gap: 40px; padding: 40px 24px; }
+      h1 { font-size: 34px; line-height: 51px; letter-spacing: 0.16em; padding-left: 0.16em; }
+      .tagline { font-size: 14px; line-height: 21px; }
+      .notify { flex-direction: column; align-items: stretch; border-radius: 24px; padding: 8px; gap: 8px; }
+      .notify input { width: 100%; padding: 0 16px; text-align: center; }
+      .notify button { width: 100%; }
+      .contact { flex-direction: column; gap: 4px; }
+      .contact .sep { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .fill { animation: none; }
+      .fill, .dot { animation: none; }
       * { transition: none !important; }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="layer base"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="orb orb-4"></div>
-    <div class="layer vignette"></div>
-    <div class="layer fade"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
 
     <header>
       <span class="brand">Bryce Ramos Photography</span>
@@ -263,50 +229,40 @@
         <h1>
           <span>Portfolio</span>
           <span>Website</span>
-          <span class="strong">Coming Soon</span>
+          <span>Coming Soon</span>
         </h1>
         <p class="tagline">A new home for my work is on its way.</p>
       </div>
 
       <div class="progress" role="img" aria-label="Website progress: 70 percent complete">
-        <div class="row">
-          <span class="small">Progress</span>
-          <span class="small accent">70%</span>
-        </div>
-        <div class="track"><div class="fill"></div></div>
-        <div class="row">
-          <span class="small ends">0%</span>
-          <span class="small ends">100%</span>
+        <div class="track"><div class="fill"></div><div class="dot"></div></div>
+        <div class="marks">
+          <span class="dim">0%</span>
+          <span class="now">70%</span>
+          <span class="dim">100%</span>
         </div>
       </div>
 
-      <form class="notify" id="notify" action="mailto:bryce@bryceramos.com" method="post" enctype="text/plain">
-        <label for="email" class="sr" style="position:absolute;left:-9999px;">Email address</label>
+      <form class="notify" action="mailto:bryce@bryceramos.com" method="post" enctype="text/plain">
+        <label for="email" class="sr">Email address</label>
         <input id="email" name="email" type="email" placeholder="Your email address" autocomplete="email" required>
-        <button type="submit">Notify Me</button>
+        <button type="submit">Notify me</button>
       </form>
-
-      <p class="contact"><a href="mailto:bryce@bryceramos.com">bryce@bryceramos.com</a></p>
     </main>
 
     <footer>
       <div class="social">
-        <!-- TODO: replace each href="#" with the real profile URL -->
+        <!-- TODO: replace href="#" with the real Instagram profile URL -->
         <a href="https://www.instagram.com/bryce.snaps.photos/" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9m0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5m5.3-3.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10m0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4m5.3-9.7a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4M16.5 2h-9A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2m3.7 14.5a3.7 3.7 0 0 1-3.7 3.7h-9a3.7 3.7 0 0 1-3.7-3.7v-9a3.7 3.7 0 0 1 3.7-3.7h9a3.7 3.7 0 0 1 3.7 3.7z"/></svg>
         </a>
-        <!--<a href="#" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8h2.7l.4-3.2h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V14h2.7v8z"/></svg>
-        </a>
-        <a href="#" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.9 8.6H3.6V20h3.3zM5.2 3.5a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8m15.2 9.9c0-3.1-1.7-4.9-4.3-4.9-1.6 0-2.6.9-3 1.6V8.6H9.9V20h3.3v-5.7c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.3z"/></svg>
-        </a>-->
       </div>
-      <div class="legal">
-        <span>© 2026 Bryce Ramos Photography</span>
+      <div class="contact">
+        <a href="mailto:bryce@bryceramos.com">bryce@bryceramos.com</a>
         <span class="sep"></span>
-        <span class="domain">www.bryceramosphotography.com</span>
+        <span>www.bryceramosphotography.com</span>
       </div>
+      <span class="legal">© 2026 Bryce Ramos Photography.</span>
     </footer>
   </div>
 </body>
